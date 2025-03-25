@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(188, 191, 195);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+            padding: 2rem;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Login Form Section */
+        .container {
+            width: 100%;
+            padding: 1rem;
+            max-width: 450px;
+        }
+
+        .help-text {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #0c0c0c;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon-container {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .user-icon {
+            font-size: 3rem;
+            color: rgb(18, 18, 18);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .login-heading {
+            color: #030303;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0a0a0a;
+            font-size: 1rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+
+        .forgot-password a {
+            color: #a31010;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .forgot-password a:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+
+        .login-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.75rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #17a321;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            .main-container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .login-heading {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Login Form Section -->
+        <div class="container">
+           
+            <div class="icon-container">
+                <i class="fas fa-user-shield user-icon"></i>
+            </div>
+            <h1 class="login-heading" id="loginTypeHeading">LOG IN</h1>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="userType">Login as</label>
+                    <select id="userType" name="userType" required>
+                        <option value="admin">Admin</option>
+                        <option value="employee">Employee</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="error-message" id="errorMessage"></div>
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-button">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Update heading based on selected user type
+        document.getElementById('userType').addEventListener('change', function() {
+            const userType = this.value;
+            const heading = document.getElementById('loginTypeHeading');
+            const icon = document.querySelector('.user-icon');
+            
+            if (userType === 'admin') {
+                heading.textContent = 'ADMIN LOG IN';
+                icon.className = 'fas fa-user-shield user-icon';
+            } else {
+                heading.textContent = 'EMPLOYEE LOG IN';
+                icon.className = 'fas fa-user user-icon';
+            }
+        });
+
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userType = document.getElementById('userType').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Simple validation (in a real app, you would check against a database)
+            if (userType === 'admin' && username === 'ADMIN' && password === 'ADMIN01') {
+                errorMessage.style.display = 'none';
+                // alert('Admin login successful! Redirecting to admin dashboard...');
+                // window.location.href = './dashboard.html';
+                setTimeout(() => {
+    window.location.href = 'dashboard.html';
+}, 1000);
+
+            } else if (userType === 'employee' && username === 'EMPLOYEE' && password === 'EMP02') {
+                errorMessage.style.display = 'none';
+                alert('Employee login successful! Redirecting to employee dashboard...');
+                window.location.href = 'dashboard.html';
+            } else {
+                errorMessage.textContent = 'Invalid username or password. Please try again.';
+                errorMessage.style.display = 'block';
+            }
+        });
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
