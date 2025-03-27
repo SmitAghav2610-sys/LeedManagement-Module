@@ -12,16 +12,10 @@ function toggleDropdown(event) {
     }
 }
 
-// Function to toggle sidebar on mobile
-document.addEventListener("DOMContentLoaded", () => {
-    const sidebarCollapseBtn = document.getElementById("sidebarCollapseBtn");
-    if (sidebarCollapseBtn) {
-        sidebarCollapseBtn.addEventListener("click", () => {
-            document.getElementById("sidebar").classList.toggle("active");
-            document.getElementById("content").classList.toggle("active");
-        });
-    }
-});
+// Initialize the app when the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", initApp);
+
+
 
 // Function to get lead list from localStorage
 function getLeadList() {
@@ -496,13 +490,4 @@ function initApp() {
 
     // Also check immediately on page load
     checkReminders();
-}
-
-// Initialize the app when the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", initApp);
-
-// Function to toggle sidebar
-function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-    document.getElementById("content").classList.toggle("active");
 }

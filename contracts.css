@@ -294,7 +294,7 @@ body {
   
   .filters h3 {
     font-size: 0.875rem;
-    color: #fff;
+    color:black;
     margin: 1rem 0 0.5rem;
   }
   
@@ -307,7 +307,7 @@ body {
 
   .filter-options label {
     display: flex;
-    color: #fff;
+    color: black;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.875rem;
@@ -329,7 +329,7 @@ body {
   
   .date-filter label {
     font-size: 0.75rem;
-    color: #fff;
+    color: black;
   }
   
   .date-filter input {

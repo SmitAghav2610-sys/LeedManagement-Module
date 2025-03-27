@@ -681,7 +681,7 @@ body {
     }
     
     .crm-calendar-view-options {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
     .crm-d-flex{
         display: block;
@@ -717,5 +717,110 @@ body {
     
     .crm-settings-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Calendar Responsive Media Queries */
+@media (max-width: 480px) {
+    /* Extra small devices (phones) */
+    .crm-calendar-grid {
+        grid-template-columns: repeat(7, minmax(30px, 1fr));
+        gap: 0.15rem;
+    }
+    
+    .crm-calendar-day {
+        min-height: 50px;
+        padding: 0.15rem;
+    }
+    
+    .crm-calendar-day-header {
+        padding: 0.15rem;
+        font-size: 0.6rem;
+    }
+    
+    .crm-calendar-day-number {
+        font-size: 0.65rem;
+        margin-bottom: 0.15rem;
+    }
+    
+    .crm-calendar-week {
+        grid-template-columns: auto repeat(7, minmax(60px, 1fr));
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Small devices (portrait tablets/large phones) */
+    .crm-calendar-grid {
+        grid-template-columns: repeat(7, minmax(40px, 1fr));
+        gap: 0.25rem;
+    }
+    
+    .crm-calendar-day {
+        min-height: 60px;
+        padding: 0.25rem;
+    }
+    
+    .crm-calendar-day-header {
+        padding: 0.25rem;
+        font-size: 0.7rem;
+    }
+    
+    .crm-calendar-day-number {
+        font-size: 0.7rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .crm-calendar-week {
+        grid-template-columns: auto repeat(7, minmax(70px, 1fr));
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Medium devices (landscape tablets) */
+    .crm-calendar-grid {
+        grid-template-columns: repeat(7, minmax(80px, 1fr));
+    }
+    
+    .crm-calendar-day {
+        min-height: 80px;
+    }
+    
+    .crm-calendar-event {
+        font-size: 0.65rem;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    /* Large devices (laptops) */
+    .crm-calendar-grid {
+        grid-template-columns: repeat(7, minmax(100px, 1fr));
+    }
+    
+    .crm-calendar-day {
+        min-height: 100px;
+    }
+}
+
+@media (min-width: 1281px) {
+    /* Extra large devices (large laptops/desktops) */
+    .crm-calendar-grid {
+        grid-template-columns: repeat(7, minmax(120px, 1fr));
+    }
+    
+    .crm-calendar-day {
+        min-height: 120px;
+    }
+}
+
+/* Touch device event handling */
+@media (hover: none) {
+    .crm-calendar-day:active .crm-calendar-event {
+        display: block;
+        position: absolute;
+        background: white;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        width: 120px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
